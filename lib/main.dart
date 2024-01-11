@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit/pages/navpage/home_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cubit/cubit/app_cubit_logics.dart';
+import 'package:flutter_cubit/cubit/app_cubits.dart';
+import 'package:flutter_cubit/pages/detail_page.dart';
+import 'package:flutter_cubit/pages/home_page.dart';
 import 'package:flutter_cubit/pages/navpage/main_page.dart';
 import 'package:flutter_cubit/pages/welcome_page.dart';
 
@@ -15,7 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: Colors.green),
-      home: WelcomePage(),
+      home: BlocProvider<AppCubits>(
+        create: (context)=>AppCubits(),
+        child: AppCubitLogic(),
+      ),
     );
   }
 }
